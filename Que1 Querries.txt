@@ -1,0 +1,11 @@
+1 -->
+
+SELECT courses.name as CourseName,teachers.name as TeachersName FROM courses INNER JOIN teachers on courses.teacher_id=teachers.id 
+
+2 -->
+
+SELECT teachers.name as TeacherName FROM courses INNER JOIN teachers on courses.teacher_id=teachers.id GROUP BY teacher_id HAVING COUNT(courses.teacher_id)>1
+
+3 -->
+
+SELECT teachers.name FROM teachers WHERE not EXISTS(SELECT * FROM courses where courses.teacher_id=teachers.id)
